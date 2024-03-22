@@ -13,20 +13,20 @@ Mods: {
 				DisplayName: Huaso
 
 				TownNPCMood: {
-					// Content: "{$Mods.ChileMOD.TownNPCMood.Huaso.Content}"
-					// NoHome: "{$Mods.ChileMOD.TownNPCMood.Huaso.NoHome}"
-					// FarFromHome: "{$Mods.ChileMOD.TownNPCMood.Huaso.FarFromHome}"
-					// LoveSpace: "{$Mods.ChileMOD.TownNPCMood.Huaso.LoveSpace}"
-					// DislikeCrowded: "{$Mods.ChileMOD.TownNPCMood.Huaso.DislikeCrowded}"
-					// HateCrowded: "{$Mods.ChileMOD.TownNPCMood.Huaso.HateCrowded}"
-					// LoveBiome: "{$Mods.ChileMOD.TownNPCMood.Huaso.LoveBiome}"
-					// LikeBiome: "{$Mods.ChileMOD.TownNPCMood.Huaso.LikeBiome}"
-					// HateBiome: "{$Mods.ChileMOD.TownNPCMood.Huaso.HateBiome}"
-					// LoveNPC: "{$Mods.ChileMOD.TownNPCMood.Huaso.LoveNPC}"
-					// LikeNPC: "{$Mods.ChileMOD.TownNPCMood.Huaso.LikeNPC}"
-					// DislikeNPC: "{$Mods.ChileMOD.TownNPCMood.Huaso.DislikeNPC}"
-					// LikeNPC_Princess: I like {NPCName}.
-					// Princess_LovesNPC: I like {NPCName}.
+					Content: "{$Mods.ChileMOD.TownNPCMood.Huaso.Content}"
+					NoHome: "{$Mods.ChileMOD.TownNPCMood.Huaso.NoHome}"
+					FarFromHome: "{$Mods.ChileMOD.TownNPCMood.Huaso.FarFromHome}"
+					LoveSpace: "{$Mods.ChileMOD.TownNPCMood.Huaso.LoveSpace}"
+					DislikeCrowded: "{$Mods.ChileMOD.TownNPCMood.Huaso.DislikeCrowded}"
+					HateCrowded: "{$Mods.ChileMOD.TownNPCMood.Huaso.HateCrowded}"
+					LoveBiome: "{$Mods.ChileMOD.TownNPCMood.Huaso.LoveBiome}"
+					LikeBiome: "{$Mods.ChileMOD.TownNPCMood.Huaso.LikeBiome}"
+					HateBiome: "{$Mods.ChileMOD.TownNPCMood.Huaso.HateBiome}"
+					LoveNPC: "{$Mods.ChileMOD.TownNPCMood.Huaso.LoveNPC}"
+					LikeNPC: "{$Mods.ChileMOD.TownNPCMood.Huaso.LikeNPC}"
+					DislikeNPC: "{$Mods.ChileMOD.TownNPCMood.Huaso.DislikeNPC}"
+					LikeNPC_Princess: I like {NPCName}.
+					Princess_LovesNPC: I like {NPCName}.
 				}
 			}
 
@@ -58,7 +58,7 @@ Mods: {
 			Huaso: {
 				PartyGirlDialogue: Esta fiesta esta bien... pero el 18 eh mejor
 				StandardDialogue1: Cosah raras pasan por aca.... el bosque esta piola eso si.
-				StandardDialogue2: �Te gusta el cordero al palo? Es lo mejor mijo.
+				StandardDialogue2: ¿Te gusta el cordero al palo? Es lo mejor mijo.
 				StandardDialogue3: Todo eso con microchipeh no lo nescesito... nunca me gusto
 			}
 		}

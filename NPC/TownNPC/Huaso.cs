@@ -1,3 +1,4 @@
+using ChileMOD.Items.Armas;
 using ChileMOD.Items.Comida;
 using ChileMOD.NPC.Critter;
 using Microsoft.Xna.Framework;
@@ -7,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
@@ -18,6 +20,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Terraria.Utilities;
+using static Terraria.GameContent.Animations.IL_Actions.NPCs;
 
 namespace ChileMOD.NPC.TownNPC
 {
@@ -28,7 +31,6 @@ namespace ChileMOD.NPC.TownNPC
 		public const string ShopName = "Shop";
 		public int NumberOfTimesTalkedTo = 0;
 
-		private static int ShimmerHeadIndex;
 		private static Profiles.StackedNPCProfile NPCProfile;
 
 		public override void SetStaticDefaults() {
@@ -139,6 +141,24 @@ namespace ChileMOD.NPC.TownNPC
 		//		Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 34), NPC.velocity, legGore);
 		//	}
 		//}
+		public override void SetChatButtons(ref string button, ref string button2) { // What the chat buttons are when you open up the chat UI
+			button = Language.GetTextValue("LegacyInterface.28");
+		}
+
+		public override void OnChatButtonClicked(bool firstButton, ref string shop) {
+			if (firstButton) {
+				shop = ShopName; // Name of the shop tab we want to open.
+			}
+		}
+		public override void AddShops() {
+			var npcShop = new NPCShop(Type, ShopName)
+				.Add<Anticucho>()
+				.Add<Terremoto>()
+				.Add<TrompoArma>()
+				.Add<Piscola>()
+				.Add<Empanada>();
+			npcShop.Register(); // Name of this shop tab
+		}
 
 		public override bool CanTownNPCSpawn(int numTownNPCs) { // Requirements for the town NPC to spawn.
 			for (int k = 0; k < Main.maxPlayers; k++) {
@@ -174,61 +194,13 @@ namespace ChileMOD.NPC.TownNPC
 		public override string GetChat() {
 			WeightedRandom<string> chat = new WeightedRandom<string>();
 			// These are things that the NPC has a chance of telling you when you talk to it.
-			chat.Add(Language.GetTextValue("Mods.ExampleMod.Dialogue.Huaso.StandardDialogue1"));
-			chat.Add(Language.GetTextValue("Mods.ExampleMod.Dialogue.Huaso.StandardDialogue2"));
-			chat.Add(Language.GetTextValue("Mods.ExampleMod.Dialogue.Huaso.StandardDialogue3"));
-			chat.Add(Language.GetTextValue("Mods.ExampleMod.Dialogue.Huaso.StandardDialogue4"));
-			chat.Add(Language.GetTextValue("Mods.ExampleMod.Dialogue.Huaso.CommonDialogue"), 5.0);
-			chat.Add(Language.GetTextValue("Mods.ExampleMod.Dialogue.Huaso.RareDialogue"), 0.1);
-
-			NumberOfTimesTalkedTo++;
-			if (NumberOfTimesTalkedTo >= 10) {
-				//This counter is linked to a single instance of the NPC, so if Huaso is killed, the counter will reset.
-				chat.Add(Language.GetTextValue("Mods.ExampleMod.Dialogue.Huaso.TalkALot"));
-			}
+			chat.Add(Language.GetTextValue("Mods.ChileMOD.Dialogue.Huaso.StandardDialogue1"));
+			chat.Add(Language.GetTextValue("Mods.ChileMOD.Dialogue.Huaso.StandardDialogue2"));
+			chat.Add(Language.GetTextValue("Mods.ChileMOD.Dialogue.Huaso.StandardDialogue3"));
 
 			string chosenChat = chat; // chat is implicitly cast to a string. This is where the random choice is made.
 
-			// Here is some additional logic based on the chosen chat line. In this case, we want to display an item in the corner for StandardDialogue4.
-			if (chosenChat == Language.GetTextValue("Mods.ExampleMod.Dialogue.Huaso.StandardDialogue4")) {
-				// Main.npcChatCornerItem shows a single item in the corner, like the Angler Quest chat.
-				Main.npcChatCornerItem = ItemID.HiveBackpack;
-			}
-
 			return chosenChat;
-		}
-
-		public override void SetChatButtons(ref string button, ref string button2) { // What the chat buttons are when you open up the chat UI
-			button = "shop";
-		}
-
-		public override void OnChatButtonClicked(bool firstButton, ref string shop) {
-			if (firstButton) {
-				// We want 3 different functionalities for chat buttons, so we use HasItem to change button 1 between a shop and upgrade action.
-				shop = "Pica del Huasito"; // Name of the shop tab we want to open.
-			}
-		}
-
-		// Not completely finished, but below is what the NPC will sell
-		public override void AddShops() {
-			var npcShop = new NPCShop(Type, ShopName)
-				//.Add<EquipMaterial>()
-				//.Add<BossItem>()
-				.Add<Items.Comida.Anticucho>()
-				.Add<Items.Comida.Piscola>()
-				.Add<Items.Comida.Empanada>()
-				.Add<Items.Comida.Choripan>()
-				.Add<Items.Comida.Terremoto>();
-			npcShop.Register(); // Name of this shop tab
-		}
-
-		public override void ModifyActiveShop(string shopName, Item[] items) {
-			foreach (Item item in items) {
-				// Skip 'air' items and null items.
-				if (item == null || item.type == ItemID.None) {
-					continue;
-				}
-			}
 		}
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) {
@@ -260,15 +232,5 @@ namespace ChileMOD.NPC.TownNPC
 			randomOffset = 2f;
 			// SparklingBall is not affected by gravity, so gravityCorrection is left alone.
 		}
-
-		public override void LoadData(TagCompound tag) {
-			NumberOfTimesTalkedTo = tag.GetInt("numberOfTimesTalkedTo");
-		}
-
-		public override void SaveData(TagCompound tag) {
-			tag["numberOfTimesTalkedTo"] = NumberOfTimesTalkedTo;
-		}
-
-		// Let the NPC "talk about" minion boss
 	}
 }
