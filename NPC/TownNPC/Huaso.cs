@@ -213,17 +213,17 @@ namespace ChileMOD.NPC.TownNPC
 		// Make something happen when the npc teleports to a statue. Since this method only runs server side, any visual effects like dusts or gores have to be synced across all clients manually.
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback) {
-			damage = 20;
+			damage = 25;
 			knockback = 4f;
 		}
 
 		public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown) {
-			cooldown = 30;
-			randExtraCooldown = 30;
+			cooldown = 15;
+			randExtraCooldown = 20;
 		}
 
 		public override void TownNPCAttackProj(ref int projType, ref int attackDelay) {
-			projType = ProjectileID.Bananarang;
+			projType = ProjectileID.BloodyMachete;
 			attackDelay = 1;
 		}
 

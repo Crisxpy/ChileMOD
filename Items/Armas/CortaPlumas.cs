@@ -31,8 +31,8 @@ namespace ChileMOD.Items.Armas
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.DirtBlock, 10);
-            recipe.AddTile(TileID.WorkBenches);
+            recipe.AddIngredient(ItemID.IronBar, 3);
+			recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }
     }
