@@ -45,7 +45,7 @@ namespace ChileMOD.Items.Armor.Vanity
         {
             CreateRecipe()
                 .AddIngredient(ItemID.Silk, 5)
-                .AddIngredient(ItemID.HermesBoots)
+                .AddIngredient(ItemID.IronBar)
                 .Register();
         }
     }

@@ -30,7 +30,7 @@ Mods: {
 				}
 			}
 
-			// BunnyHuaso.DisplayName: Conejo Huasito
+			// ConejoHuaso.DisplayName: Conejo Huaso
 		}
 
 		Bestiary.Huaso: De las areas campesinas de Chile, trae toda la fiesta dieciochera con el.
@@ -119,7 +119,7 @@ Mods: {
 			}
 
 			Empanada: {
-				// DisplayName: Choripan
+				// DisplayName: Empanada de Pino
 				/* Tooltip:
 					'''
 					{$CommonItemTooltip.MinorStats}
@@ -150,8 +150,8 @@ Mods: {
 				// Tooltip: ""
 			}
 
-			ShadowbeamStaffClone: {
-				// DisplayName: Shadowbeam Staff Clone
+			ConejoHuasoItem: {
+				// DisplayName: Conejo Huaso Item
 				// Tooltip: ""
 			}
 		}

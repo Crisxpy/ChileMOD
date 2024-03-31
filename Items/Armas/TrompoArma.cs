@@ -69,8 +69,8 @@ namespace ChileMOD.Items.Armas
 		// Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.
 		public override void AddRecipes() {
 			CreateRecipe()
-				.AddIngredient(ItemID.Wood)
 				.AddIngredient(ItemID.Silk)
+				.AddIngredient(ItemID.Wood,1)
 				.Register();
 		}
 	}

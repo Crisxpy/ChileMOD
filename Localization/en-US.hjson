@@ -30,7 +30,7 @@ Mods: {
 				}
 			}
 
-			BunnyHuaso.DisplayName: Conejo Huasito
+			ConejoHuaso.DisplayName: Conejo Huaso
 		}
 
 		Bestiary.Huaso: From the Country side in Chilean southern areas, he blast traditional music and dances every 18 of september for Chile.
@@ -119,7 +119,7 @@ Mods: {
 			}
 
 			Empanada: {
-				DisplayName: Choripan
+				DisplayName: Empanada de Pino
 				Tooltip:
 					'''
 					{$CommonItemTooltip.MinorStats}
@@ -150,8 +150,8 @@ Mods: {
 				Tooltip: ""
 			}
 
-			ShadowbeamStaffClone: {
-				DisplayName: Shadowbeam Staff Clone
+			ConejoHuasoItem: {
+				DisplayName: Conejo Huaso Item
 				Tooltip: ""
 			}
 		}

@@ -43,7 +43,8 @@ namespace ChileMOD.Items.Armor.Vanity
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ItemID.Silk, 10)
+                .AddIngredient(ItemID.Silk, 5)
+				.AddIngredient(ItemID.BlackDye, 1)
                 .Register();
         }
     }

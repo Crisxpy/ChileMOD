@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.GameContent.Creative;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace ChileMOD.Items.Placeables
@@ -23,6 +24,13 @@ namespace ChileMOD.Items.Placeables
 			Item.maxStack = 99;
 			Item.rare = ItemRarityID.Blue;
 			Item.value = Item.buyPrice(0, 1);
+		}
+		public override void AddRecipes() {
+			Recipe recipe = CreateRecipe();
+			recipe.AddIngredient(ItemID.Silk,3)
+			.AddIngredient(ItemID.RedDye, 1).
+			AddIngredient(ItemID.BlueDye,1).
+			Register();
 		}
 	}
 }

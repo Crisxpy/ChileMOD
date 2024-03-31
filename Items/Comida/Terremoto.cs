@@ -36,8 +36,9 @@ namespace ChileMOD.Items.Comida
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ItemID.Glass, 5)
-                .AddCondition(Condition.NearWater)
+                .AddIngredient(ItemID.Glass, 1)
+				.AddIngredient(ItemID.IceBlock, 1)
+				.AddCondition(Condition.NearWater)
                 .Register();
         }
         public override void OnConsumeItem(Player player)

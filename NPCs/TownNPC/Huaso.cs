@@ -1,6 +1,5 @@
 using ChileMOD.Items.Armas;
 using ChileMOD.Items.Comida;
-using ChileMOD.NPC.Critter;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -22,7 +21,7 @@ using Terraria.ModLoader.IO;
 using Terraria.Utilities;
 using static Terraria.GameContent.Animations.IL_Actions.NPCs;
 
-namespace ChileMOD.NPC.TownNPC
+namespace ChileMOD.NPCs.TownNPC
 {
 	// [AutoloadHead] and NPC.townNPC are extremely important and absolutely both necessary for any Town NPC to work at all.
 	[AutoloadHead]
@@ -111,35 +110,37 @@ namespace ChileMOD.NPC.TownNPC
 			});
 		}
 
-		//public override void HitEffect(NPC.HitInfo hit) {
-		//	int num = NPC.life > 0 ? 1 : 5;
+		public override void HitEffect(Terraria.NPC.HitInfo hit) {
+			int num = NPC.life > 0 ? 1 : 5;
 
-		//	for (int k = 0; k < num; k++) {
-		//		Dust.NewDust(NPC.position, NPC.width, NPC.height, ModContent.DustType<Sparkle>());
-		//	}
+			for (int k = 0; k < num; k++) {
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood);
+			}
 
-		//	// Create gore when the NPC is killed.
-		//	if (Main.netMode != NetmodeID.Server && NPC.life <= 0) {
-		//		// Retrieve the gore types. This NPC has shimmer and party variants for head, arm, and leg gore. (12 total gores)
-		//		string variant = "";
-		//		if (NPC.IsShimmerVariant) variant += "_Shimmer";
-		//		if (NPC.altTexture == 1) variant += "_Party";
-		//		int hatGore = NPC.GetPartyHatGore();
-		//		int headGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Head").Type;
-		//		int armGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Arm").Type;
-		//		int legGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Leg").Type;
+			// Create gore when the NPC is killed.
+			if (Main.netMode != NetmodeID.Server && NPC.life <= 0) {
+				// Retrieve the gore types. This NPC has shimmer and party variants for head, arm, and leg gore. (12 total gores)
+				string variant = "";
+				if (NPC.IsShimmerVariant)
+					variant += "_Shimmer";
+				if (NPC.altTexture == 1)
+					variant += "_Party";
+				int hatGore = NPC.GetPartyHatGore();
+				int headGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Head").Type;
+				int armGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Arm").Type;
+				int legGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Leg").Type;
 
-		//		// Spawn the gores. The positions of the arms and legs are lowered for a more natural look.
-		//		if (hatGore > 0) {
-		//			Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, hatGore);
-		//		}
-		//		Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, headGore, 1f);
-		//		Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 20), NPC.velocity, armGore);
-		//		Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 20), NPC.velocity, armGore);
-		//		Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 34), NPC.velocity, legGore);
-		//		Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 34), NPC.velocity, legGore);
-		//	}
-		//}
+				// Spawn the gores. The positions of the arms and legs are lowered for a more natural look.
+				if (hatGore > 0) {
+					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, hatGore);
+				}
+				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, headGore, 1f);
+				Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 20), NPC.velocity, armGore);
+				Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 20), NPC.velocity, armGore);
+				Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 34), NPC.velocity, legGore);
+				Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 34), NPC.velocity, legGore);
+			}
+		}
 		public override void SetChatButtons(ref string button, ref string button2) { // What the chat buttons are when you open up the chat UI
 			button = Language.GetTextValue("LegacyInterface.28");
 		}
